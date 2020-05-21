@@ -1,11 +1,19 @@
 body {
     margin: 0;
     text-align: center;
+    background-color: rgb(47, 154, 241);
+    /* background-color: rgb(71, 194, 177); */
+    /* background-color: rgba(255, 200, 61, 0.603); */
+    /* background: linear-gradient( rgb(47, 154, 241),rgb(71, 194, 177), rgba(255, 200, 61, 0.603)) no-repeat center center fixed; */
+    /* background-size: cover; */
+    min-width: 500px;
 }
 
 .header {
-    background-color: rgb(108, 232, 147);
+    background-color: rgb(255, 200, 61);
+    border-bottom: 5px double white;
     margin-bottom: 15px;
+    box-shadow: 4px 4px 8px black;
 }
 
 .header ul {
@@ -17,39 +25,74 @@ body {
     display: inline-block;
 }
 
-.header h1 {
-    letter-spacing: 2px;
-    text-shadow: 2px 2px black;
-    font-family: monospace;
-    font-size: 35px;
-    padding: 10px;
-    margin: 0 50px;
+.header div.hints {
+    animation: heartBeat 0.5s infinite;
 }
 
-.header div.hints {
+.header div.hints span{
     font-size: 30px;
+    cursor: pointer;
+    animation: heartBeat 0.5s infinite;
+
+}
+
+span.hint-clicked {
+    text-shadow:-4px -4px 4px rgb(184, 0, 0);
+    transition: 1s;
 }
 
 .header div.lifes {
-    font-size: 30px;
-    color: red;
+    font-size: 35px;
+    color: rgb(184, 0, 0);
+    animation: heartBeat 0.5s infinite;
+    cursor: default;
 }
 
-/* @keyframes heartBeat {
+@keyframes heartBeat {
     0% {transform: scale(1.00);}
-    12.5% {transform: scale(1.02);}
-    25% {transform: scale(1.04);}
-    37.5% {transform: scale(1.06);}
-    50% {transform: scale(1.08);}
-    62.5% {transform: scale(1.06);}
-    75% {transform: scale(1.04);}
-    87.5% {transform: scale(1.052);}
+    12.5% {transform: scale(1.04);}
+    25% {transform: scale(1.06);}
+    37.5% {transform: scale(1.08);}
+    50% {transform: scale(1.10);}
+    62.5% {transform: scale(1.08);}
+    75% {transform: scale(1.06);}
+    87.5% {transform: scale(1.04);}
     100% {transform: scale(1.00);}
-} */
+}
 
 
 .header h1 {
-    color: white;
+    font-family: 'Piedra', cursive;
+    color: rgb(184, 4, 4);
+    letter-spacing: 10px;
+    font-size: 50px;
+    text-shadow: 4px 4px rgb(255, 255, 255);
+    padding: 10px;
+    margin: 0 50px;
+    cursor: default;
+    transition: 1s;
+}
+
+.header h1:hover {
+    text-shadow: 4px 4px rgb(0, 0, 0)
+}
+
+.timer {
+    margin-top: 25px;
+}
+
+.timer div {
+    display: inline;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 200, 61);
+    font-size: 20px;
+    font-family: 'Press Start 2P', cursive;
+    margin:0;
+    padding: 5px;
+    border: 2px double #000000;
+    border-radius: 5px;
+    box-shadow: 2px 2px red;
+    cursor: default;
 }
 
 button {
@@ -61,27 +104,27 @@ button {
     width: 75px;
     height: 40px;
     padding: 5px;
-    font-size: 17.5px;
-    text-transform: capitalize;
-    margin: 15px 0;
+    font-size: 10px;
+    text-transform: uppercase;
+    margin: 15px 2px;
     opacity: 50%;
     transition: 1s;
-    font-family: monospace;
+    font-family: 'Press Start 2P', cursive;
     font-weight: bold;
 }
 
 .modes button:hover {
-    background-color: rgb(108, 232, 147);
+    background-color: rgb(255, 200, 61);
 }
 
 button.mode {
-    background-color: rgb(108, 232, 147);
-    color: black;
+    background-color: rgb(255, 200, 61);
+    color: rgb(184, 0, 0);
     opacity: 100%;
     width: 100px;
     height: 50px;
-    font-size: 25px;
-    border: 2px dotted black;
+    font-size: 15px;
+    border: 2px double black;
     animation: flipY 1s;
     box-shadow: 4px 4px 10px black;
 }
@@ -91,35 +134,88 @@ button.mode {
         transform: rotateY(360deg);
     }
 }
+.rotate-me {
+    animation: flipX .5s;
+}
+@keyframes flipX {
+    100% {
+        transform: rotateX(360deg);
+    }
+}
+
+
+button.mode2 {
+    background-color: rgb(255, 200, 61);
+    color: rgb(184, 0, 0);
+    opacity: 100%;
+    width: 225px;
+    height: 50px;
+    font-size: 15px;
+    border: 2px double black;
+    animation: rotate-me 1s;
+    box-shadow: 4px 4px 10px black;
+}
+
+@keyframes rotate-me {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.manuel {
+    width: 175px;
+    height: 40px;
+    padding: 5px;
+    font-size: 10px;
+    opacity: 50%;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    transition: 1s;
+    font-family: 'Press Start 2P', cursive;
+    font-weight: bold;
+}
 
 .smiley button {
     width: 35px;
     height: 35px;
-    background-color: #c8c4c4;
+    background-color: rgb(184, 0, 0);
+    box-shadow: 4px 4px 4px rgb(0, 0, 0);
     font-size: 15px;
     margin-bottom: 10px;
 }
 
 table {
     margin: 0 auto;
-    border: 1px solid black;
+    border: 2px inset white;
     border-collapse: collapse;
     box-shadow: 4px 4px 10px black;
 }
 
 td {
     outline: none;
+    background-color: rgb(255, 255, 255);
     width: 30px;
     height: 30px;
     margin: 0;
     border: 1px solid black;
     cursor: pointer;
     font-family: fantasy;
-    box-shadow: inset 0 0 10px #00000048;
+    box-shadow: inset 0 0 10px rgb(141, 141, 141);
+}
+td:hover {
+    box-shadow:inset 2px 2px 10px black;
+}
+
+.hovered-cells {
+    box-shadow: inset 0 0 10px rgb(141, 141, 141);
 }
 
 .revealed {
-    background-color: #c8c4c4;
+    background-color: #b3b0b0;
+}
+
+@keyframes flipZ {
+    100% {transform: rotateY(180deg);}
 }
 
 .mine-clicked {
@@ -146,19 +242,28 @@ td img.exploded {
     height: 20px;
 }
 
+.extra-btn button.safe-btn {
+    font-weight: bold;
+}
+
 .extra-btn button {
-    margin: 20px 2px;
-    padding: 15px;
+    margin: 30px 0px;
+    padding: 12.5px;
+    font-family: monospace;
     font-size: 15px;
-    background-color: #c8c4c4;
+    background-color:  rgb(184, 0, 0);
+    color: rgb(255, 200, 61);
+    transition: 1s;
 }
 
 .extra-btn button:hover {
-    background-color: rgb(246, 246, 130);
+    background-color: rgb(0, 0, 0);
+    color: white;
 }
 
 .disable-btn {
     opacity: 30%;
+    cursor: not-allowed;
 }
 
 button.disable-btn:hover {
@@ -179,3 +284,106 @@ button.disable-btn:hover {
     83.33% {background-color: #c8c4c4;}
     100% {background-color: rgb(246, 246, 130);}
 }
+
+.hs {
+    font-family: 'Piedra', cursive;
+    color: rgb(184, 4, 4);
+    letter-spacing: 10px;
+    font-size: 30px;
+    text-shadow: 4px 4px rgb(255, 255, 255);
+    padding: 10px;
+    margin: 0 auto;
+    cursor: default;
+    transition: 1s;
+    width: 375px;
+    border-bottom: 5px double black;
+}
+
+h1.hs:hover {
+    cursor: pointer;
+    text-shadow: 4px 4px rgb(0, 0, 0)
+}
+
+.highscores {
+    background-color: rgba(255, 255, 255, 0);
+    font-family: monospace;
+    font-size: 20px;
+    list-style: none;
+    display: inline-block;
+    border: 2px inset rgb(184, 0, 0);
+    border-radius: 10px;
+    padding: 10px 20px 20px 20px;
+    box-shadow: 6px 6px 4px black;
+    opacity: 0%;
+    transition: 1s;
+}
+
+.fade {
+    opacity: 100%;
+}
+
+.hsHeader li{
+    font-family: monospace;
+    color: rgb(184, 0, 0);
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.hsHeader{
+    list-style: none;
+    font-size: 15px;
+    font-family: monospace;
+    margin-bottom: 10px;
+    width: 100px;
+    padding: 5px 30px;
+    border: 2px solid black;
+    background-color: rgb(255, 200, 61);
+}
+
+.highscores span {
+    color: rgb(184, 0, 0);
+    text-transform: uppercase;
+    font-family: fantasy;
+}
+
+.resetHigh {
+    padding: 12.5px;
+    font-family: monospace;
+    font-size: 15px;
+    background-color:  rgb(184, 0, 0);
+    color: rgb(255, 200, 61);
+    transition: 1s;
+    font-weight: bold;
+}
+
+.wipe-scores {
+    animation:ease-in-out wipe-scores .5s;
+}
+
+@keyframes wipe-scores {
+    0% {transform: translate(0, 0)}
+    5% {transform: translate(0, -30px)}
+    12.5% {transform: translate(0, -70px)}
+    25% {transform: translate(0, -110px)}
+    37.5% {transform: translate(0, -150px)}
+    50% {transform: translate(0, -180px)}
+    62.5% {transform: translate(0, -150px)}
+    75% {transform: translate(0, -110px)}
+    87.5% {transform: translate(0, -70px)}
+    95% {transform: translate(0, -30px)}
+    100% {transform: translate(0, 0)}
+}
+
+button.resetHigh:hover {
+    background-color: rgb(0, 0, 0);
+    color: white;
+}
+
+.ONE {color:#0000fd;}
+.TWO {color:#017e00;}
+.THREE {color:#fd0000;}
+.FOUR {color:#000180;}
+.FIVE {color:#7f0300;}
+.SIX {color:#008080;}
+.SEVEN {color:#000000;}
+.EIGHT {color:#808080;}

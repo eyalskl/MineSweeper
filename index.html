@@ -6,16 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mine Sweeper</title>
     <link rel="stylesheet" href="css/main.css">
-</head>
+    <script src="https://kit.fontawesome.com/f4b51a9e99.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Piedra&family=Press+Start+2P&display=swap" rel="stylesheet"></head>
 
 <body onload="initGame()" onmousedown="handlePress(event)">
+    
     <div class="header">
         <ul>
             <li>
                 <div class="hints">
-                    <span>💡</span>
-                    <span>💡</span>
-                    <span>💡</span>
+                    <span onclick="setHintModeOn(this)" title="Click me for Hint!">💡</span>
+                    <span onclick="setHintModeOn(this)" title="Click me for Hint!">💡</span>
+                    <span onclick="setHintModeOn(this)" title="Click me for Hint!">💡</span>
                 </div>
             </li>
             <li>
@@ -31,13 +33,12 @@
         </ul>
     </div>
 
-    <div class="game-bar">
-        <span class="timer">
-            <span class="hundreds">0</span>
-            <span class="tens">0</span>
-            <span class="ones">0</span>
-        </span>
+    <div class="timer">
+        <div class="hundreds">0</div>
+        <div id="tens" class="tens">0</div>
+        <div class="ones">0</div>
     </div>
+
 
     <div class="modes">
         <button onclick="setMode(this, 4, 2)" class="easy mode">easy</button>
@@ -45,19 +46,52 @@
         <button onclick="setMode(this, 12, 30)" class="hard">hard</button>
     </div>
 
+    <button onclick="setManuelMode(this)" class="manuel">Manually Create</button>
+
+
     <div class="smiley">
         <button onclick="initGame()"> </button>
     </div>
 
+
     <table>
         <tbody class="board"> </tbody>
     </table>
-    
+
+
+
     <div class="extra-btn">
         <button class="safe-btn" onclick="revealSafe(this)"></button>
-        <button class="undo-btn">Undo</button>
+        <button class="undo-btn" onclick="undo()" title="Undo"><i class="fas fa-undo"></i></button>
     </div>
 
+
+
+<h1 class="hs" onclick="showHighScores()">Show High Scores</h1>
+<ul class="highscores">
+    <li>
+        <div class="hsEasy"> <span>--- Easy ---</span> 
+            <ul class="hsHeader">
+                <li id="highEasy">999</li>  
+            </ul>
+        </div>
+    </li>
+    <li>
+        <div class="hsMed"> <span>--- Medium ---</span>
+            <ul class="hsHeader"> 
+                <li id="highMed">999</li>  
+            </ul>
+        </div>
+    </li>
+    <li>
+        <div class="hsHard"><span>--- Hard ---</span>  
+            <ul class="hsHeader"> 
+                <li id="highHard">999</li>  
+            </ul>
+        </div>
+    </li>
+    <button class="resetHigh" onclick="resetHighScores(this)">Reset High Scores</button>
+</ul>
 
     <script src="js/util.js"></script>
     <script src="js/app.js"></script>
