@@ -134,6 +134,7 @@ function cellClicked(elCell) {
             currCell.isMine = false;
             renderCell(cellCoord, EMPTY);
             generateRandMines(1);
+            renderBoard(gBoard, '.board');
         }
     }
     if (currCell.isMine) {
