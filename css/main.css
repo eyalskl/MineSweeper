@@ -14,6 +14,7 @@ body {
     border-bottom: 5px double white;
     margin-bottom: 15px;
     box-shadow: 4px 4px 8px black;
+    transition: 1s;
 }
 
 .header ul {
@@ -295,7 +296,7 @@ button.disable-btn:hover {
     margin: 0 auto;
     cursor: default;
     transition: 1s;
-    width: 375px;
+    width: 390px;
     border-bottom: 5px double black;
 }
 

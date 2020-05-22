@@ -36,7 +36,7 @@ function renderBoard(board, selector) {
                     cellClass = 'revealed';
                 }
             }
-            if (!gManuelMode) {
+            if (gHintMode) {
                 if (board[i][j].isMine && board[i][j].isShown) {
                     cell = MINE_IMAGE;
                     cellClass = 'revealed';
@@ -46,6 +46,7 @@ function renderBoard(board, selector) {
             strHTML += `<td id="${cellId}" 
                             class="cell ${cellClass}" 
                             onclick="cellClicked(this)"
+                            oncontextmenu="cellMarked(this)"
                             style="color:${color};">
                             ${cell}
                             </td>`;

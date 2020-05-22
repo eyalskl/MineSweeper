@@ -203,7 +203,7 @@ function handlePress(mouseEvent) {
             console.log(`im a middle click`);
             break;
         case 2:
-            cellMarked(elCell);
+            // cellMarked(elCell);
             break;
     }
 }
@@ -448,13 +448,20 @@ function undo() {
         initGame()
         return;
     }
+    if (checkGameWon) {
+        gGame.isOn = true;
+        gElSmiley.innerHTML = NORMAL;
+        gElSafeBtn.disabled = '';
+    }
     var prevBoard = gPrevMoves.splice(gPrevMoves.length - 2)[0];
-    // gPrevMoves.pop()
     renderBoardReversed(gBoard, prevBoard);
 }
 
 function showHighScores() {
-    document.querySelector('.highscores').classList.toggle('fade');
+    var elHighScoresUl = document.querySelector('.highscores');
+    elHighScoresUl.classList.toggle('fade');
+    if (elHighScoresUl.classList.contains('fade')) document.querySelector('.hs').innerText = 'Hide High Scores!';
+    else document.querySelector('.hs').innerText = 'Show High Scores!';
 }
 
 function setHighScore(highScore) {
@@ -517,6 +524,7 @@ function setManuelMode(elBtn) {
     elBtn.classList.toggle('mode2');
     if (elBtn.classList.contains('mode2')) {
         elBtn.innerText = 'Set & Press Me'
+        document.querySelector('.hints').style.visibility = 'hidden';
         gManuelMode = true;
         initGame();
     } else {
@@ -524,6 +532,7 @@ function setManuelMode(elBtn) {
         renderBoard(gBoard, '.board');
         gManuelMode = false;
         elBtn.innerText = 'Manually Create'
+        document.querySelector('.hints').style.visibility = '';
     }
 }
 
