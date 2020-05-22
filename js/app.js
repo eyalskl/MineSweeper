@@ -115,7 +115,7 @@ function gameOver(location) {
 function cellClicked(elCell) {
     if (!gGame.isOn) return;
     if (checkGameWon()) return;
-    smileyBlink();
+    // smileyBlink();
     if (gManuelMode) {
         setMinesByUser(elCell);
         return
@@ -173,12 +173,12 @@ function cellMarked(elCell) {
     if (gManuelMode) return
     var cellCoord = getCellCoord(elCell.id);
     var currCell = gBoard[cellCoord.i][cellCoord.j]
-    // if (currCell.isShown && currCell.isMine) {
-    //     currCell.isMarked = true;
-    //     renderCell(cellCoord, FLAG);
-    //     gPrevMoves.push(copyMat(gBoard));
-    //     if (checkGameWon()) return;
-    // }
+    if (currCell.isShown && currCell.isMine) {
+        currCell.isMarked = true;
+        renderCell(cellCoord, FLAG);
+        gPrevMoves.push(copyMat(gBoard));
+        if (checkGameWon()) return;
+    }
     if (currCell.isShown) return
     if (!currCell.isMarked) {
         currCell.isMarked = true;
@@ -199,15 +199,12 @@ function smileyBlink() {
 }
 
 function handlePress(mouseEvent) {
-    resetDafultBehavior();
+    // resetDafultBehavior();
     var elCell = mouseEvent.path[0];
     if (!elCell.id) return;
     switch (mouseEvent.button) {
         case 0:
-            if (gGame.isOn) {
-                gElSmiley.innerHTML = ONCLICK;
-                setTimeout(function () { gElSmiley.innerHTML = NORMAL }, 100);
-            }
+            smileyBlink();
             break;
         case 1:
             console.log(`im a middle click`);
