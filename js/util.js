@@ -42,11 +42,17 @@ function renderBoard(board, selector) {
                     cellClass = 'revealed';
                 }
             }
+            if (gManuelMode) {
+                if (board[i][j].isMine && board[i][j].isShown) {
+                    board[i][j].isShown = false;
+                    cell = EMPTY;
+                    cellClass = '';
+                }
+            }
             var cellId = `cell-${i}-${j}`;
             strHTML += `<td id="${cellId}" 
                             class="cell ${cellClass}" 
                             onclick="cellClicked(this)"
-                            oncontextmenu="cellMarked(this)"
                             style="color:${color};">
                             ${cell}
                             </td>`;
@@ -73,10 +79,8 @@ function getEmptyVals() {
     for (var i = 0; i < gBoard.length; i++) {
         for (var j = 0; j < gBoard[0].length; j++) {
             var cell = gBoard[i][j];
-            // if (cell.isFirst === true) continue;
             if (cell.isShown === true) continue;
             if (cell.isMine === true) continue;
-            // if (cell.minesAroundCount > 0) continue; 
             empties.push({ i: i, j: j });
         }
     }
@@ -136,11 +140,15 @@ function renderBoardReversed(board, prevBoard) {
                     cellClass = 'revealed';
                 }
             }
-            if (!gManuelMode) {
+            if (gHintMode) {
                 if (board[i][j].isMine && board[i][j].isShown) {
                     cell = MINE_IMAGE;
                     cellClass = 'revealed';
                 }
+            }
+            if (board[i][j].isMarked && board[i][j].isMine) {
+                cell = EMPTY;
+                board[i][j].isMarked = false;
             }
             var cellId = `cell-${i}-${j}`;
             strHTML += `<td id="${cellId}" 
