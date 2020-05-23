@@ -49,6 +49,10 @@ function renderBoard(board, selector) {
                     cellClass = '';
                 }
             }
+            if (board[i][j].isMarked) {
+                cell = FLAG;
+                cellClass = '';
+            }
             var cellId = `cell-${i}-${j}`;
             strHTML += `<td id="${cellId}" 
                             class="cell ${cellClass}" 
@@ -114,7 +118,7 @@ function renderBoardReversed(board, prevBoard) {
             var cell;
             var cellClass;
             var color;
-            var minesAround = board[i][j].minesAroundCount;
+            var minesAround = prevBoard[i][j].minesAroundCount;
             if (minesAround === 1) color = ONE;
             if (minesAround === 2) color = TWO;
             if (minesAround === 3) color = THREE;
@@ -123,14 +127,13 @@ function renderBoardReversed(board, prevBoard) {
             if (minesAround === 6) color = SIX;
             if (minesAround === 7) color = SEVEN;
             if (minesAround === 8) color = EIGHT;
-            if (board[i][j].isMine) {
+            if (prevBoard[i][j].isMine) {
                 cell = EMPTY;
                 cellClass = '';
-            } else if (!board[i][j].isShown) {
+            } else if (!prevBoard[i][j].isShown) {
                 cell = EMPTY
                 cellClass = '';
             } else {
-                var minesAround = board[i][j].minesAroundCount
                 if (minesAround > 0) {
                     cell = minesAround;
                     cellClass = 'revealed';
@@ -141,14 +144,14 @@ function renderBoardReversed(board, prevBoard) {
                 }
             }
             if (gHintMode) {
-                if (board[i][j].isMine && board[i][j].isShown) {
+                if (prevBoard[i][j].isMine && prevBoard[i][j].isShown) {
                     cell = MINE_IMAGE;
                     cellClass = 'revealed';
                 }
             }
-            if (board[i][j].isMarked && board[i][j].isMine) {
-                cell = EMPTY;
-                board[i][j].isMarked = false;
+            if (prevBoard[i][j].isMarked && prevBoard[i][j].isMine) {
+                cell = FLAG;
+                board[i][j].isMarked = true;
             }
             var cellId = `cell-${i}-${j}`;
             strHTML += `<td id="${cellId}" 

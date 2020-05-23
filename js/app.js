@@ -115,7 +115,6 @@ function gameOver(location) {
 function cellClicked(elCell) {
     if (!gGame.isOn) return;
     if (checkGameWon()) return;
-    // smileyBlink();
     if (gManuelMode) {
         setMinesByUser(elCell);
         return
@@ -174,12 +173,13 @@ function cellMarked(elCell) {
     if (gManuelMode) return
     var cellCoord = getCellCoord(elCell.id);
     var currCell = gBoard[cellCoord.i][cellCoord.j]
-    if (currCell.isShown && currCell.isMine) {
-        currCell.isMarked = true;
-        renderCell(cellCoord, FLAG);
-        gPrevMoves.push(copyMat(gBoard));
-        if (checkGameWon()) return;
-    }
+    // if (currCell.isShown && currCell.isMine) {
+    //     alert('i am usefull!')
+    //     currCell.isMarked = true;
+    //     renderCell(cellCoord, FLAG);
+    //     gPrevMoves.push(copyMat(gBoard));
+    //     if (checkGameWon()) return;
+    // }
     if (currCell.isShown) return
     if (!currCell.isMarked) {
         currCell.isMarked = true;
@@ -562,13 +562,13 @@ function setMinesByUser(elCell) {
     }
 }
 
-function setCellNumberColor(model, elCell) {
-    if (model.minesAroundCount === 1) elCell.classList.add('ONE');
-    if (model.minesAroundCount === 2) elCell.classList.add('TWO');
-    if (model.minesAroundCount === 3) elCell.classList.add('THREE');
-    if (model.minesAroundCount === 4) elCell.classList.add('FORE');
-    if (model.minesAroundCount === 5) elCell.classList.add('FIVE');
-    if (model.minesAroundCount === 6) elCell.classList.add('SIX');
-    if (model.minesAroundCount === 7) elCell.classList.add('SEVEN');
-    if (model.minesAroundCount === 8) elCell.classList.add('EIGHT');
+function setCellNumberColor(cell, elCell) {
+    if (cell.minesAroundCount === 1) elCell.classList.add('ONE');
+    if (cell.minesAroundCount === 2) elCell.classList.add('TWO');
+    if (cell.minesAroundCount === 3) elCell.classList.add('THREE');
+    if (cell.minesAroundCount === 4) elCell.classList.add('FORE');
+    if (cell.minesAroundCount === 5) elCell.classList.add('FIVE');
+    if (cell.minesAroundCount === 6) elCell.classList.add('SIX');
+    if (cell.minesAroundCount === 7) elCell.classList.add('SEVEN');
+    if (cell.minesAroundCount === 8) elCell.classList.add('EIGHT');
 }
